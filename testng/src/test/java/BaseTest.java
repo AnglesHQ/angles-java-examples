@@ -73,11 +73,8 @@ public class BaseTest extends AnglesTestngBaseTest {
         ImageCompareResponse comparison = anglesReporter.compareScreenshotAgainstBaseline(screenshotId);
         if (comparison != null) {
             // baseline was set and we have a comparison
-            if (comparison.getMisMatchPercentage() > 1) {
-                anglesReporter.fail("Image Comparison", "Mismatch to be less than " + maxMisMatch, "Mismatch was greater than " + maxMisMatch, "Analysis Time: " + comparison.getAnalysisTime());
-            } else {
-                anglesReporter.pass("Image Comparison", "Mismatch to be less than " + maxMisMatch, "Mismatch was less than " + maxMisMatch, "Analysis Time: " + comparison.getAnalysisTime());
-            }
+            anglesReporter.info("Comparing screenshot against baseline and checking if misMatch [" + comparison.getMisMatchPercentage() + "] is greater than acceptable mismatch [" + maxMisMatch + "]");
+            doAssert.assertGreaterThan(maxMisMatch, comparison.getMisMatchPercentage());
         } else {
             // no baseline set yet.
             anglesReporter.info("No baseline found, please go into the Angles dashboard and set a baseline");

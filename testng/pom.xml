@@ -41,7 +41,7 @@
         <dependency>
             <groupId>com.github.angleshq</groupId>
             <artifactId>angles-testng</artifactId>
-            <version>1.0.26-SNAPSHOT</version>
+            <version>1.0.28</version>
         </dependency>
     </dependencies>
 </project>

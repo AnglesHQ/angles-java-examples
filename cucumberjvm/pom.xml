@@ -15,12 +15,34 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.21.0</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <angles.enabled>true</angles.enabled>
+                        <angles.url>http://127.0.0.1:3000</angles.url>
+                        <angles.runName>CucumberJVM Example</angles.runName>
+                        <angles.team>angles</angles.team>
+                        <angles.component>cucumberjvm-example</angles.component>
+                        <angles.environment>qa</angles.environment>
+                    </systemPropertyVariables>
+                    <includes>
+                        <include>**/AnglesTestRunner.java</include>
+                    </includes>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <dependencies>
         <dependency>
             <groupId>com.github.angleshq</groupId>
             <artifactId>angles-cucumberjvm</artifactId>
-            <version>1.0.25</version>
+            <version>1.0.28</version>
         </dependency>
     </dependencies>
 </project>
