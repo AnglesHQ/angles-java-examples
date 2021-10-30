@@ -42,7 +42,7 @@ public class BaseTest {
     public void beforeAll() {
         // store the details for the SUT, but you will need your own code to collect the details.
         List<Artifact> artifacts = new ArrayList<Artifact>();
-        artifacts.add(new Artifact("com.github.anghleshq", "angles-testng-example", "1.0.0"));
+        artifacts.add(new Artifact("com.github.anghleshq", "angles-junit-example", "1.0.0"));
         anglesReporter.storeArtifacts(artifacts.toArray(new Artifact[0]));
     }
 

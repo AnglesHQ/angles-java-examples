@@ -51,7 +51,7 @@
         <dependency>
             <groupId>com.github.angleshq</groupId>
             <artifactId>angles-junit5</artifactId>
-            <version>1.0.28</version>
+            <version>1.0.32</version>
         </dependency>
     </dependencies>
 </project>

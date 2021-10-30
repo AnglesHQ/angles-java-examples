@@ -1,6 +1,7 @@
 package com.github.angleshq.angles;
 
 import com.github.angleshq.angles.api.models.Platform;
+import com.github.angleshq.angles.api.models.build.Artifact;
 import com.github.angleshq.angles.api.models.screenshot.ImageCompareResponse;
 import com.github.angleshq.angles.api.models.screenshot.Screenshot;
 import com.github.angleshq.angles.api.models.screenshot.ScreenshotDetails;
@@ -22,8 +23,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 public class ExampleSteps extends AnglesCucumberAdapter {
@@ -34,7 +35,12 @@ public class ExampleSteps extends AnglesCucumberAdapter {
 
     @Before
     public void initilizeAnglesAdapter() {
-        // required to trigger the Angles before
+        // this before method is required to trigger the Angles setup (even if empty)
+
+        // store the details for the SUT, but you will need your own code to collect the details.
+        List<Artifact> artifacts = new ArrayList<Artifact>();
+        artifacts.add(new Artifact("com.github.anghleshq", "angles-cucumberjvm-example", "1.0.0"));
+        anglesReporter.storeArtifacts(artifacts.toArray(new Artifact[0]));
 
         browser = new ChromeDriver();
         // resolution is set to ensure the screenshot is the same size
